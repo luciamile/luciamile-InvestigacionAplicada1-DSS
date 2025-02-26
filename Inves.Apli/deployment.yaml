@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minikube-deployment
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: minikube
+  template:
+    metadata:
+      labels:
+        app: minikube
+    spec:
+      containers:
+      - name: minikube
+        image: robotsitoalian/dockerfile:imagenDocker
+        ports:
+        - containerPort: 83
+        resources:
+          requests:
+            cpu: "100m"  # 100 milicores de CPU
+            memory: "128Mi"  # 128 MiB de memoria
+          limits:
+            cpu: "200m"
+            memory: "256Mi"

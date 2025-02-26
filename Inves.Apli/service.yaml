@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: minikube-service
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 83
+    targetPort: 83
+    nodePort: 30007
+  selector:
+    app: minikube
